@@ -1,3 +1,9 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
 /* Name of the class has to be "Main" only if the class is public. */
 import java.util.*;
 import java.lang.*;
@@ -34,6 +40,17 @@ class LinkedList {
 
 	}
 	
+	int printKthToLastNodeRec(Node head, int k){
+		if(head==null){
+			return 0;
+		}
+		int index = printKthToLastNodeRec(head.next, k)+1;
+		if(index == k){
+			System.out.println(head.value);
+		}
+		return index;
+	}
+	
 	public static void main(String[] args){
 		LinkedList ll = new LinkedList();
 		ll.insert(1);
@@ -41,7 +58,8 @@ class LinkedList {
 		ll.insert(3);
 		ll.insert(4);
 		ll.print();
-		ll.printKthToLastNode(4);
+		ll.printKthToLastNode(3);
+		ll.printKthToLastNodeRec(ll.head, 4);
 	}
 	
 	public void insert(int data){
