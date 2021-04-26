@@ -1,4 +1,4 @@
-/* package whatever; // don't place package name! */
+package LinkedLists;
 
 import java.util.*;
 import java.lang.*;
@@ -9,7 +9,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class LinkedList {
+class KthToLastNode {
 	Node head;
 
 	class Node {
@@ -52,7 +52,7 @@ class LinkedList {
 	}
 	
 	public static void main(String[] args){
-		LinkedList ll = new LinkedList();
+		KthToLastNode ll = new KthToLastNode();
 		ll.insert(1);
 		ll.insert(2);
 		ll.insert(3);

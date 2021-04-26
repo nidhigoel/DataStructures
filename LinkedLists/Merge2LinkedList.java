@@ -1,9 +1,9 @@
-/* Name of the class has to be "Main" only if the class is public. */
+package LinkedLists;/* Name of the class has to be "Main" only if the class is public. */
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class LinkedList {
+class Merge2LinkedList {
 	Node head;
 
 	class Node {
@@ -16,13 +16,13 @@ class LinkedList {
 	}
 	
 public static void main(String[] args){
-		LinkedList ll1 = new LinkedList();
+	Merge2LinkedList ll1 = new Merge2LinkedList();
 		ll1.insert(1);
 		ll1.insert(3);
 		ll1.insert(4);
 		ll1.insert(9);
 		// ll1.print();
-		LinkedList ll2 = new LinkedList();
+	Merge2LinkedList ll2 = new Merge2LinkedList();
 		ll2.insert(2);
 		ll2.insert(5);
 		ll2.insert(6);
@@ -30,12 +30,12 @@ public static void main(String[] args){
 		// ll2.print();
 		// LinkedList ll3 = mergeIterative(ll1.head, ll2.head);
 		// LinkedList ll3 = mergeRec1(ll1.head, ll2.head);
-		LinkedList ll3 = mergeRec2(ll1.head, ll2.head);
+	Merge2LinkedList ll3 = mergeRec2(ll1.head, ll2.head);
 		ll3.print();
 	}
 	
-	public static LinkedList mergeRec1(Node head1, Node head2){
-		LinkedList ll = new LinkedList();
+	public static Merge2LinkedList mergeRec1(Node head1, Node head2){
+		Merge2LinkedList ll = new Merge2LinkedList();
 		
 		if(head1==null){ ll.head = head2; return ll;}
 		if(head2==null){ ll.head = head1; return ll;}
@@ -52,8 +52,8 @@ public static void main(String[] args){
 		return ll;
 	}
 	
-	public static LinkedList mergeRec2(Node head1, Node head2){
-		LinkedList ll = new LinkedList();
+	public static Merge2LinkedList mergeRec2(Node head1, Node head2){
+		Merge2LinkedList ll = new Merge2LinkedList();
 		ll.head = ll.mergeRecV2(head1, head2);
 		return ll;
 	}
@@ -90,9 +90,9 @@ public static void main(String[] args){
 		return result;
 	}
 
-	public static LinkedList mergeIterative(Node head1, Node head2){
+	public static Merge2LinkedList mergeIterative(Node head1, Node head2){
 
-		LinkedList ll = new LinkedList();
+		Merge2LinkedList ll = new Merge2LinkedList();
 		
 		if(head1==null){ ll.head = head2; return ll;}
 		if(head2==null){ ll.head = head1; return ll;}

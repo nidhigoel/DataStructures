@@ -1,9 +1,9 @@
-/* Name of the class has to be "Main" only if the class is public. */
+package LinkedLists;/* Name of the class has to be "Main" only if the class is public. */
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class LinkedList {
+class Reverse {
 	Node head;
 
 	class Node {
@@ -16,7 +16,7 @@ class LinkedList {
 	}
 	
 	public static void main(String[] args){
-		LinkedList ll = new LinkedList();
+		Reverse ll = new Reverse();
 		ll.insert(1);
 		ll.insert(2);
 		ll.insert(3);
