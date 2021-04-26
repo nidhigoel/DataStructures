@@ -4,6 +4,9 @@ import com.sun.javafx.geom.Edge;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+// https://leetcode.com/problems/min-cost-to-connect-all-points/
+// finiding minimum spanning tree using kruskal's algorithm
+// using disjoint set union to find cycle in graph
 public class MinSpanningTree {
   static class DSU{
     public int noOfComponents;
