@@ -11,6 +11,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
+// https://leetcode.com/problems/min-cost-to-connect-all-points/
+// finiding minimum spanning tree using kruskal's algorithm
+// using disjoint set union to find cycle in graph
 public class MinSpanningTree {
   static class DSU{
     public int noOfComponents;
