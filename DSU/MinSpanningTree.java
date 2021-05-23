@@ -1,8 +1,15 @@
 package DSU;
 
 import com.sun.javafx.geom.Edge;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class MinSpanningTree {
   static class DSU{
@@ -60,18 +67,15 @@ public class MinSpanningTree {
       this.j=j;
       this.length=length;
     }
+
+    public int getCost(){
+      return length;
+    }
   }
 
   public static int minCostConnectPoints(int[][] points) {
     int n = points.length;
-    PriorityQueue<Edge> heap = new PriorityQueue<>(new Comparator<Edge>() {
-      @Override
-      public int compare(Edge o1, Edge o2) {
-        if(o1.length<o2.length) return -1;
-        else if(o1.length==o2.length) return 0;
-        else return 1;
-      }
-    });
+    PriorityQueue<Edge> heap = new PriorityQueue<>(Comparator.comparing(Edge::getCost));
 
     for(int i=0 ; i<n; i++){
       for(int j=i+1; j<n; j++){
