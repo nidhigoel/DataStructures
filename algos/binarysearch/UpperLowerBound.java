@@ -54,12 +54,12 @@ public class UpperLowerBound {
 
     if(arr.get(low) >= X) return low;
     else if(arr.get(high) >= X) return high;
-    return  0;
+    return arr.size();
   }
 
   public static void main(String[] args) {
     List<Integer> arr = Arrays.asList(2, 3, 4, 4, 5, 8, 9);
-    System.out.println(upper_bound(arr,4,0));
-    System.out.println(lower_bound(arr,4,0));
+    System.out.println(upper_bound(arr,1,0));
+    System.out.println(lower_bound(arr,1,0));
   }
 }
