@@ -3,6 +3,13 @@ package Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// important concept
+// 0
+// 1 -> if sum%k = x
+// 2
+// 3
+// 4 -> if sum%k = x
+// it implies sum between 1 to 4 (exclusive) was multiple of k
 public class SubarraySum {
   //https://leetcode.com/problems/continuous-subarray-sum/
   public boolean checkSubarraySum(int[] nums, int k) {

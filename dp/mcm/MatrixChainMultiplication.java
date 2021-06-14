@@ -3,6 +3,10 @@ package dp.mcm;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+// burst balloon
+// scramble string
+// egg dropping
+// triangulation of polygon
 public class MatrixChainMultiplication {
 
   static int mcmRecursive(int start, int end, int[] matrices, Map<Integer, Integer> cache){

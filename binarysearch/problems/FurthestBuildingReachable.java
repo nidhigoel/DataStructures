@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// concept : apply binary search on solution space
+// N log N sorting
+// logN times call
+// each call takes O(N) time
+// instead of O(N*N) reduced to O(NLogN)
 public class FurthestBuildingReachable {
   public int furthestBuilding(int[] heights, int bricks, int ladders) {
     List< int[] > diff=new ArrayList<>();
