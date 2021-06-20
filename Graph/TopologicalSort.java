@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 // Approach 1 : DFS
-// Approach 2 : Indegree
+// Approach 2 : In-degree
 public class TopologicalSort {
   static boolean impossible = false;
   // https://leetcode.com/problems/course-schedule-ii

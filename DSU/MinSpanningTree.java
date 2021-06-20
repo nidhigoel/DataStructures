@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 // https://leetcode.com/problems/min-cost-to-connect-all-points/
@@ -79,7 +80,7 @@ public class MinSpanningTree {
   public static int minCostConnectPoints(int[][] points) {
     int n = points.length;
     PriorityQueue<Edge> heap = new PriorityQueue<>(Comparator.comparing(Edge::getCost));
-
+    Queue<Double> minpq = new PriorityQueue<Double>((a,b)-> (int) (a-b));
     for(int i=0 ; i<n; i++){
       for(int j=i+1; j<n; j++){
         heap.add(new Edge(i,j, getDistance(points, i, j)));

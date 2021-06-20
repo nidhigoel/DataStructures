@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+//BFS
 public class AlternatingColor {
   static class Node{
     int vert;
