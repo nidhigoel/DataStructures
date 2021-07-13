@@ -1,5 +1,7 @@
 package dp.problems.window;
 
+import java.util.List;
+
 //https://leetcode.com/problems/minimum-cost-to-merge-stones/
 public class MergeKStones {
 

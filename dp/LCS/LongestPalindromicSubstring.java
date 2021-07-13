@@ -37,6 +37,7 @@ public class LongestPalindromicSubstring {
     return 2 + minCut(a.substring(0,start)) + minCut(a.substring(end,N));
   }
 
+  // https://leetcode.com/problems/longest-palindromic-substring/
   public static String longestPalindrome(String a) {
     int N = a.length();
     if(N<1)return a;
@@ -47,7 +48,7 @@ public class LongestPalindromicSubstring {
     int start = 0;
     int end = 0;
     char[] A = a.toCharArray();
-    for(int l=1; l<=N; l++){
+    for(int l=1; l<=N; l++){ // gap strategy
       for(int i=0, j=i+l-1; i<N&&j<N; i++,j++){
         // char a = a.charAt(i);
         // char b = a.charAt(i);
@@ -73,7 +74,6 @@ public class LongestPalindromicSubstring {
   }
 
   public static void main(String[] args) {
-//    System.out.println(longestPalindrome("abcb"));
     System.out.println(minCut("adabdcaebdcebdcacaaaadbbcadabcbeabaadcbcaaddebdbddcbdacdbbaedbdaaecabdceddccbdeeddccdaabbabbdedaaabcdadbdabeacbeadbaddcbaacdbabcccbaceedbcccedbeecbccaecadccbdbdccbcbaacccbddcccbaedbacdbcaccdcaadcbaebebcceabbdcdeaabdbabadeaaaaedbdbcebcbddebccacacddebecabccbbdcbecbaeedcdacdcbdbebbacddddaabaedabbaaabaddcdaadcccdeebcabacdadbaacdccbeceddeebbbdbaaaaabaeecccaebdeabddacbedededebdebabdbcbdcbadbeeceecdcdbbdcbdbeeebcdcabdeeacabdeaedebbcaacdadaecbccbededceceabdcabdeabbcdecdedadcaebaababeedcaacdbdacbccdbcece"));
   }
 }

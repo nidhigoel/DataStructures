@@ -1,100 +1,106 @@
 package trie;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
+// https://www.youtube.com/watch?v=0k79LqIaHyQ
+// https://leetcode.com/problems/implement-trie-prefix-tree/
 public class Trie {
-  TrieDS trieRoot;
+  static TrieNode root;
+  static class TrieNode{
+    char ch;
+    int wc;
+    TrieNode[] children;
 
-  class TrieDS{
-    private char ch;
-    boolean isEndOfWord;
-    private TrieDS[] trie = new TrieDS[26];
-
-    TrieDS(char ch){
-      this.ch = ch;
-      isEndOfWord = false;
+    TrieNode(char ch){
+      this.ch=ch;
+      wc=0;
+      children = new TrieNode[26];
     }
+  }
 
-    public TrieDS getChild(char ch){
-      return trie[ch-'a'];
-    }
-
-    public int getCount(char ch){
-      int ans=0;
-      for(int i=0; i<26; i++){
-        if(trie[i]!=null) ans++;
+  static void insert(String str){
+    TrieNode node = root;
+    char[] ar = str.toCharArray();
+    for(int i=0;i<ar.length;i++){
+      Character ch = ar[i];
+      TrieNode cur = node.children[ch-'a'];
+      if(cur==null){
+        cur = new TrieNode(ch);
+        node.children[ch-'a'] = cur;
       }
-      return ans;
+      node=cur;
     }
-
-    public void add(TrieDS child){
-      if(trie[child.ch-'a'] == null) trie[child.ch-'a'] = child;
-    }
-
-    public void print(){
-      System.out.println(ch+ " "+ isEndOfWord);
-      // for(int i=0; i<26; i++){
-      //     if(trie[i]!=null) System.out.println(trie[i].ch + " ");
-      // }
-    }
-
-
+    node.wc++;
   }
 
-  /** Initialize your data structure here. */
-  public Trie() {
-    trieRoot = new TrieDS(' ');
-  }
-
-  /** Inserts a word into the trie. */
-  public void insert(String word) {
-    TrieDS temp = trieRoot;
-    for(int i=0; i<word.length(); i++){
-      TrieDS child = temp.getChild(word.charAt(i));
-      if(child == null) {
-        child = new TrieDS(word.charAt(i));
-        temp.add(child);
-      }
-      temp=child;
+  static boolean search(String str){
+    TrieNode node = root;
+    char[] ar = str.toCharArray();
+    for(int i=0;i<ar.length;i++){
+      Character ch = ar[i];
+      TrieNode cur = node.children[ch-'a'];
+      if(cur==null) return false;
+      node=cur;
     }
-    temp.isEndOfWord = true;
-    // System.out.println("inserted "+word);
-    // print(trieRoot);
+    return node.wc>0;
   }
 
-  /** Inserts a word into the trie. */
-  public void print(TrieDS root) {
-    if(root==null) return;
-    root.print();
-    for(int i=0; i<26; i++){
-      if(root.trie[i]!=null) print(root.trie[i]);
-    }
-  }
-
-  /** Returns if the word is in the trie. */
-  public boolean search(String word) {
-
-    // System.out.println("searching "+word);
-
-    TrieDS temp = trieRoot;
-    for(int i=0; i<word.length(); i++){
-      TrieDS child = temp.getChild(word.charAt(i));
-      if(child == null) {
-        // System.out.println("returning false");
-        return false;}
-      temp=child;
-    }
-    // System.out.println("temp.isEndOfWord"+temp.isEndOfWord);
-    return temp.isEndOfWord;
-  }
-
-  /** Returns if there is any word in the trie that starts with the given prefix. */
-  public boolean startsWith(String prefix) {
-    TrieDS temp = trieRoot;
-    for(int i=0; i<prefix.length(); i++){
-      TrieDS child = temp.getChild(prefix.charAt(i));
-      if(child == null) return false;
-      temp=child;
+  static boolean isPrefix(String str){
+    TrieNode node = root;
+    char[] ar = str.toCharArray();
+    for(int i=0;i<ar.length;i++){
+      Character ch = ar[i];
+      TrieNode cur = node.children[ch-'a'];
+      if(cur==null) return false;
+      node=cur;
     }
     return true;
+  }
 
+  public int countWordsEqualTo(String word) {
+    TrieNode node = root;
+    char[] ar = word.toCharArray();
+    for(int i=0;i<ar.length;i++){
+      Character ch = ar[i];
+      TrieNode cur = node.children[ch-'a'];
+      if(cur==null) return 0;
+      node=cur;
+    }
+    return node.wc;
+  }
+
+  public int countWordsStartingWith(String prefix) {
+    TrieNode node = root;
+    char[] ar = prefix.toCharArray();
+    for(int i=0;i<ar.length;i++){
+      Character ch = ar[i];
+      TrieNode cur = node.children[ch-'a'];
+      if(cur==null) return 0;
+      node=cur;
+    }
+    int ans=0;
+    Queue<TrieNode> nodes = new LinkedList<>();
+    nodes.add(node);
+
+    while (!nodes.isEmpty()){
+      TrieNode cur = nodes.remove();
+      for(int i=0;i<26;i++){
+        TrieNode child = cur.children[i];
+        if(child!=null) {
+          nodes.add(child);
+          ans+=child.wc;
+        }
+      }
+    }
+
+    return ans;
+  }
+
+  public static void main(String[] args) {
+    root = new TrieNode(' ');
+    insert("abc");
+    System.out.println(search("ab"));
+    System.out.println(isPrefix("ab"));
   }
 }

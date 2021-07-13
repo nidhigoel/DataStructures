@@ -28,6 +28,8 @@ public class HistogramMaxRectangle {
 
     // concept of next greater element
     // https://www.youtube.com/watch?v=NXOOYYwpbg4
+    // finding nearest smaller, if exists
+    // otherwise end element is the right boundary
     static long[] getRightBoundary(long[] hist, int N){
       long[] ans = new long[N];
       Stack<Integer> st = new Stack<>();
@@ -44,6 +46,8 @@ public class HistogramMaxRectangle {
       return ans;
     }
 
+    // finding nearest smaller, if exists
+    // otherwise 0 th element is the left boundary
     static long[] getLeftBoundary(long[] hist, int N){
       long[] ans = new long[N];
       Stack<Integer> st = new Stack<>();
